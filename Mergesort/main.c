@@ -11,6 +11,17 @@ int main(int argc, char*argv[]) {
         printf("Valore: %d non valido\n", tot);
         return 1;
     }
+    srand(time(NULL));
+
+    Node head1=NULL, head2=NULL;
+
+    init(&head1, tot);
+    initV2(&head2, tot);
+    viewList(head1);
+    viewList(head2);
+    //removeEven(&head1);
+    removeRecursiveEven(&head1);
+    viewList(head1);
 
     return 0;
 }
