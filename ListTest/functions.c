@@ -55,11 +55,9 @@ void removeRecursiveEven(Node*head) {
         Node temp=*head;
         *head=(*head)->next;
         free(temp);
-        removeRecursiveEven(head);
-    } else {
-        removeRecursiveEven(&((*head)->next));
-        //test
-    }
+    } else
+        head=&((*head)->next);
+    removeRecursiveEven(head);
 }
 
 void viewList(Node head) {
