@@ -12,6 +12,7 @@ Node*initList(int len);
 Node*duplicateList(Node*head);
 void displayList(Node*head, int f);
 Node*duplicateEven(Node*head);
+void deletePosK(Node**head, int pos);
 
 int main(int argc, char*argv[]) {
     if(argc!=2) {
@@ -28,11 +29,25 @@ int main(int argc, char*argv[]) {
     head=initList(len);
     displayList(head, 0);
     Node*duplicate=duplicateList(head);
-    displayList(head, 0);
+    displayList(duplicate, 0);
     Node*evenOnly=duplicateEven(head);
     displayList(evenOnly, 0);
+    deletePosK(&head, 3);
+    displayList(head, 0);
+    displayList(duplicate, 0);
     
     return 0;
+}
+
+void deletePosK(Node**head, int pos) {
+    if(*head==NULL) return;
+    if(pos>1) {
+        deletePosK(&((*head)->next), pos-1);
+        return;
+    }
+    Node*temp=*head;
+    (*head)=(*head)->next;
+    free(temp);
 }
 
 Node*duplicateEven(Node*head) {
